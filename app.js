@@ -1,19 +1,19 @@
-
-const readline = require('readline').createInterface({
+"use strict";
+exports.__esModule = true;
+var readline_1 = require("readline");
+var readStream = readline_1.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-
-readline.question("Enter thy string:\n", (input) => {
+readStream.question("Enter thy string:\n", function (input) {
     doIt(input);
-    readline.close()
-})
-
+    readStream.close();
+});
 function doIt(s) {
     var splitted = s.split(" ");
     var longestWord = "";
     var totalNumber = 0;
-    splitted.forEach(word => {
+    splitted.forEach(function (word) {
         var cleanWord = word.replace(/([^a-z\-]+)/gi, "");
         var cleanNumString = word.replace(/([^0-9]+)/gi, "");
         if (cleanNumString != "") {
@@ -21,14 +21,14 @@ function doIt(s) {
         }
         if (longestWord == "") {
             longestWord = cleanWord;
-        } else {
+        }
+        else {
             if (cleanWord.length > longestWord.length)
                 longestWord = cleanWord;
         }
     });
-
-    console.log("---------------------")
+    console.log("---------------------");
     console.log("Total:", totalNumber);
-    console.log("Longest:",longestWord);
-    console.log("_____________________")
+    console.log("Longest:", longestWord);
+    console.log("_____________________");
 }
